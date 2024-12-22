@@ -1,0 +1,21 @@
+##### Folders #####
+build/
+dist/
+node_modules/
+vendor/
+var/
+.tmp/
+.venv/
+
+# IDE's
+.vscode/
+.idea/
+
+##### Files #####
+ignore.*
+*.ignore.*
+
+# Environment variables and secret keys
+.env
+.env.test
+*.pem

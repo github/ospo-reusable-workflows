@@ -1,0 +1,27 @@
+# Common
+*.md
+docker-compose.yml
+Dockerfile*
+.env*
+Makefile
+
+# Logs
+logs
+*.log
+
+# IDE's
+.vscode/
+.idea/
+
+# Dependency directories
+node_modules/
+.venv/
+
+## Cache directories
+.parcel-cache
+
+# git
+.git
+.gitattributes
+.gitignore
+.github/

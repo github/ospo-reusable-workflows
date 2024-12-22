@@ -1,0 +1,15 @@
+name: 'Auto Author Assign'
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+permissions:
+  contents: read
+jobs:
+  assign:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: toshimaru/auto-author-assign@16f0022cf3d7970c106d8d1105f75a1165edb516 # v2.1.1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
