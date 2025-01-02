@@ -11,7 +11,7 @@ on:
       release-config-name:
         required: true
         type: string
-        default: release-drafter.yml
+        default: release-drafter.yaml
       create-image:
         required: false
         type: boolean

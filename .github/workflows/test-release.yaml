@@ -1,0 +1,22 @@
+---
+name: "Release"
+on:
+  workflow_dispatch:
+  pull_request_target:
+    types: [closed]
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  release:
+    uses: ./.github/workflows/release.yaml@main
+    with:
+      publish: true
+      release-config-name: release-drafter.yaml
+      create-image: true
+      image-name: jmeridth/reusable-workflows
+      create-discussion: true
+    secrets:
+      github-token: ${{ secrets.GITHUB_TOKEN }}
+      discussion-repository-id: ${{ secrets.DISCUSSION_REPOSITORY_ID }}
+      discussion-category-id: ${{ secrets.DISCUSSION_CATEGORY_ID }}

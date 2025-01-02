@@ -1,0 +1,13 @@
+## Reference: https://github.com/amannn/action-semantic-pull-request
+---
+name: "Lint PR Title"
+on:
+  pull_request_target:
+    types: [opened, reopened, edited, synchronize]
+permissions:
+  contents: read
+jobs:
+  lint_pr_title:
+    uses: ./.github/workflows/test-pr-title.yaml@main
+    secrets:
+      github-token: ${{ secrets.GITHUB_TOKEN }}

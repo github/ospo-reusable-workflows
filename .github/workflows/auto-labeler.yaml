@@ -2,6 +2,11 @@
 name: "Auto Labeler"
 on:
   workflow_call:
+    inputs:
+      config-name:
+        required: true
+        type: string
+        default: release-drafter.yaml
     secrets:
       github-token:
         required: true
@@ -19,4 +24,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.github-token }}
         with:
-          config-name: release-drafter.yml
+          config-name: ${{ inputs.config-name }}
