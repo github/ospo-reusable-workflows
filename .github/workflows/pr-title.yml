@@ -1,13 +1,11 @@
 ## Reference: https://github.com/amannn/action-semantic-pull-request
 ---
 name: "Lint PR Title"
-
 on:
   workflow_call:
     secrets:
       github-token:
         required: true
-
 jobs:
   main:
     permissions:
