@@ -1,6 +1,10 @@
+---
 name: "Pull Request Labeler"
 on:
-  pull_request_target:
+  workflow_call:
+    secrets:
+      github-token:
+        required: true
 permissions:
   contents: read
 jobs:
@@ -12,4 +16,4 @@ jobs:
     steps:
       - uses: actions/labeler@8558fd74291d67161a8a78ce36a881fa63b766a9 # v5
         with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          repo-token: "${{ secrets.github-token }}"

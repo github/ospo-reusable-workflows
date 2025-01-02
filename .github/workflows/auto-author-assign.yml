@@ -1,4 +1,5 @@
-name: 'Auto Author Assign'
+---
+name: "Auto Author Assign"
 on:
   pull_request:
     types: [opened, reopened, synchronize]

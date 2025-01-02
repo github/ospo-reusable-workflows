@@ -1,0 +1,22 @@
+---
+name: "Auto Labeler"
+on:
+  workflow_call:
+    secrets:
+      github-token:
+        required: true
+permissions:
+  contents: read
+jobs:
+  main:
+    permissions:
+      contents: write
+      pull-requests: write
+    name: Auto label pull requests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: release-drafter/release-drafter@3f0f87098bd6b5c5b9a36d49c41d998ea58f9348
+        env:
+          GITHUB_TOKEN: ${{ secrets.github-token }}
+        with:
+          config-name: release-drafter.yml

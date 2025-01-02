@@ -1,59 +1,10 @@
-# Conventional Releases GitHub Action Composite
+# Reusable Workflows
 
-This is a composite action that uses multiple GitHub Actions to help with release automation.
+This is a placeholder repo for multiple GitHub Actions I use in my personal and open source projects.
 
-The chain consists of the following possibilities:
+Check the permissions in each reusable workflow to ensure the GITHUB_TOKEN you pass from your calling workflow meets the required permissions.
 
-- Enforce pull request titles use conventional commits notation.
-- Auto labeling based on the PR title.
-- Automatic releases and notes generation using labels.
+## Workflows
 
-## Secrets
-
-The following inputs should be provided via secrets either from your repository or organization:
-
-```yaml
-release-discussion-repository-id: ${{ secrets.RELEASE_DISCUSSION_REPOSITORY_ID }}
-release-discussion-category-id: ${{ secrets.RELEASE_DISCUSSION_CATEGORY_ID }}
-github-token: ${{ secrets.GITHUB_TOKEN }}
-```
-
-## Example Usage
-
-```yaml
-name: Release
-name: conventional release
-
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - "*"
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-
-      - name: Conventional Release Action
-        uses: jmeridth/conventional-releases-action@main
-        with:
-          enforce-conventional-commits-pr-title: true
-          release-drafter-config-name: release-drafter.yml
-          publish-release: true
-          create-release-image: true
-          dockerfile-path: Dockerfile
-          release-image-registry: ghcri.io
-          release-image-registry-username: ${{ github.actor }}
-          release-image-registry-password: ${{ secrets.GITHUB_TOKEN }}
-          release-image-name: jmeridth/conventional-releases
-          create-release-discussion: true
-          release-discussion-repository-id: ${{ secrets.RELEASE_DISCUSSION_REPOSITORY_ID }}
-          release-discussion-category-id: ${{ secrets.RELEASE_DISCUSSION_CATEGORY_ID }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-```
+- [Release](.github/workflows/release.yml): Create a release with the tag name and release notes. There are few other options (keep release as draft, release image, etc.) that you can configure.
+- [PR Title](.github/workflows/pr-title.yml): Enforce PR title format. Utilizes [conventional commits](https://github.com/commitizen/conventional-commit-types/blob/master/index.json) format.
