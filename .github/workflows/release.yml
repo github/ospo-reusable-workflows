@@ -1,0 +1,34 @@
+name: conventional release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - "*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Conventional Release Action
+        uses: ./
+        with:
+          enforce-conventional-commits-pr-title: true
+          release-drafter-config-name: release-drafter.yml
+          release-drafter-publish: true
+          create-release-image: true
+          dockerfile-path: Dockerfile
+          release-image-registry: ghcri.io
+          release-image-registry-username: ${{ github.actor}}
+          release-image-registry-password: ${{ secrets.GITHUB_TOKEN}}
+          release-image-name: jmeridth/conventional-releases
+          create-release-discussion: true
+          release-discussion-repository-id: ${{ secrets.RELEASE_DISCUSSION_REPOSITORY_ID }}
+          release-discussion-category-id: ${{ secrets.RELEASE_DISCUSSION_CATEGORY_ID }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
