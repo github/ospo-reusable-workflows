@@ -11,5 +11,7 @@ jobs:
       contents: read
       pull-requests: write
     uses: ./.github/workflows/labeler.yaml
+    with:
+      config-path: .github/labeler.yml
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}

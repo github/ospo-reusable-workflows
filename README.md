@@ -10,7 +10,7 @@ This is a placeholder repo for multiple GitHub Actions I use in my personal and 
 > [!TIP]
 > You can reuse the following files in this repository in your own as they are used by the reusable workflows:
 >
-> - [labeler.yaml](.github/labeler.yml)
+> - [labeler.yml](.github/labeler.yml)
 > - [release-drafter.yaml](.github/release-drafter.yml)
 
 > [!WARNING]  
