@@ -1,6 +1,6 @@
 ## Reference: https://github.com/amannn/action-semantic-pull-request
 ---
-name: "Lint PR Title"
+name: "Test Lint PR Title"
 on:
   pull_request_target:
     types: [opened, reopened, edited, synchronize]
