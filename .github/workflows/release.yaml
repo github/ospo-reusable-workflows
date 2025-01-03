@@ -132,8 +132,8 @@ jobs:
     permissions:
       discussions: write
     env:
-      DISCUSSION_REPOSITORY_ID: ${{ secrets.release-discussion-repository-id }}
-      DISCUSSION_CATEGORY_ID: ${{ secrets.release-discussion-category-id }}
+      DISCUSSION_REPOSITORY_ID: ${{ secrets.discussion-repository-id }}
+      DISCUSSION_CATEGORY_ID: ${{ secrets.discussion-category-id }}
     steps:
       - name: Check for Discussion Repository ID
         if: ${{ env.DISCUSSION_REPOSITORY_ID  == '' }}

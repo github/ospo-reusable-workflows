@@ -8,6 +8,9 @@ permissions:
   contents: read
 jobs:
   auto_labeler:
+    permissions:
+      contents: write
+      pull-requests: write
     uses: ./.github/workflows/auto-labeler.yaml
     with:
       config-name: release-drafter.yaml

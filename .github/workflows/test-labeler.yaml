@@ -7,6 +7,9 @@ permissions:
   contents: read
 jobs:
   labeler:
+    permissions:
+      contents: read
+      pull-requests: write
     uses: ./.github/workflows/labeler.yaml
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
