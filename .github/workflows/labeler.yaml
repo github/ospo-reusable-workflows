@@ -6,7 +6,6 @@ on:
       config-path:
         required: true
         type: string
-        default: .github/labeler.yml
     secrets:
       github-token:
         required: true

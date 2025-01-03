@@ -1,0 +1,61 @@
+---
+name: "Release Image"
+
+on:
+  workflow_call:
+    inputs:
+      image-name:
+        required: true
+        type: string
+      full-tag:
+        required: true
+        type: string
+      short-tag:
+        required: true
+        type: string
+    secrets:
+      github-token:
+        required: true
+      image-registry:
+        required: true
+      image-registry-username:
+        required: true
+      image-registry-password:
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  create_action_images:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    env:
+      IMAGE_REGISTRY: ${{ secrets.image-registry }}
+      IMAGE_REGISTRY_USERNAME: ${{ secrets.image-registry-username }}
+      IMAGE_REGISTRY_PASSWORD: ${{ secrets.image-registry-password }}
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@6524bf65af31da8d45b59e8c27de4bd072b392f5
+      - name: Log in to the Container registry
+        uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567
+        with:
+          registry: ${{ env.IMAGE_REGISTRY }}
+          username: ${{ env.IMAGE_REGISTRY_USERNAME }}
+          password: ${{ env.IMAGE_REGISTRY_PASSWORD}}
+      - name: Push Docker Image
+        if: ${{ success() }}
+        uses: docker/build-push-action@48aba3b46d1b1fec4febb7c5d0c644b249a11355
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: |
+            ${{ env.IMAGE_REGISTRY }}/${{ inputs.image-name }}:latest
+            ${{ env.IMAGE_REGISTRY }}/${{ inputs.image-name }}:${{ inputs.full-tag }}
+            ${{ env.IMAGE_REGISTRY }}/${{ inputs.image-name }}:${{ inputs.short-tag }}
+          platforms: linux/amd64,linux/arm64
+          provenance: false
+          sbom: false
