@@ -6,7 +6,6 @@ on:
       config-name:
         required: true
         type: string
-        default: release-drafter.yaml
     secrets:
       github-token:
         required: true

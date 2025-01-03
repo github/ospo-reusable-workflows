@@ -12,6 +12,6 @@ jobs:
       contents: read
       pull-requests: read
       statuses: write
-    uses: ./.github/workflows/test-pr-title.yaml
+    uses: ./.github/workflows/pr-title.yaml
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}

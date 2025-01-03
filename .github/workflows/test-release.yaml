@@ -10,21 +10,40 @@ permissions:
 jobs:
   release:
     permissions:
-      contents: write
-      discussions: write
       packages: write
-      pull-requests: read
     uses: ./.github/workflows/release.yaml
     with:
       publish: true
       release-config-name: release-drafter.yaml
-      create-image: true
+    secrets:
+      github-token: ${{ secrets.GITHUB_TOKEN }}
+  release_image:
+    needs: release
+    permissions:
+      contents: write
+      discussions: write
+      packages: write
+      pull-requests: read
+    uses: ./.github/workflows/release-image.yaml
+    with:
       image-name: jmeridth/reusable-workflows
-      create-discussion: true
+      full-tag: ${{ needs.release.outputs.full-tag }}
+      short-tag: ${{ needs.release.outputs.short-tag }}
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
       image-registry: ghcr.io
       image-registry-username: ${{ github.actor }}
       image-registry-password: ${{ secrets.GITHUB_TOKEN }}
+  release_discussion:
+    needs: release
+    permissions:
+      contents: read
+      discussions: write
+    uses: ./.github/workflows/release-discussion.yaml
+    with:
+      full-tag: ${{ needs.release.outputs.full-tag }}
+      body: ${{ needs.release.outputs.body }}
+    secrets:
+      github-token: ${{ secrets.GITHUB_TOKEN }}
       discussion-repository-id: ${{ secrets.DISCUSSION_REPOSITORY_ID }}
       discussion-category-id: ${{ secrets.DISCUSSION_CATEGORY_ID }}

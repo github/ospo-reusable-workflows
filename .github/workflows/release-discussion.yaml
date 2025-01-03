@@ -1,0 +1,51 @@
+---
+name: "Release Discussion"
+
+on:
+  workflow_call:
+    inputs:
+      full-tag:
+        required: true
+        type: string
+      body:
+        required: true
+        type: string
+    secrets:
+      github-token:
+        required: true
+      discussion-repository-id:
+        required: false
+      discussion-category-id:
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  create_discussion:
+    runs-on: ubuntu-latest
+    permissions:
+      discussions: write
+    env:
+      DISCUSSION_REPOSITORY_ID: ${{ secrets.discussion-repository-id }}
+      DISCUSSION_CATEGORY_ID: ${{ secrets.discussion-category-id }}
+    steps:
+      - name: Check for Discussion Repository ID
+        if: ${{ env.DISCUSSION_REPOSITORY_ID  == '' }}
+        run: |
+          echo "discussion-repository-id secret is not set"
+          exit 1
+      - name: Check for Discussion Category ID
+        if: ${{ env.DISCUSSION_CATEGORY_ID == '' }}
+        run: |
+          echo "discussion-category-id secret is not set"
+          exit 1
+      - name: Create an Announcement Discussion for Release
+        uses: abirismyname/create-discussion@6e6ef67e5eeb042343ef8b3d8d0f5d545cbdf024
+        env:
+          GH_TOKEN: ${{ secrets.github-token }}
+        with:
+          title: ${{ inputs.full-tag }}
+          body: ${{ inputs.body }}
+          repository-id: ${{ env.DISCUSSION_REPOSITORY_ID }}
+          category-id: ${{ env.DISCUSSION_CATEGORY_ID }}
