@@ -9,6 +9,11 @@ permissions:
   contents: read
 jobs:
   release:
+    permissions:
+      contents: write
+      discussions: write
+      packages: write
+      pull-requests: read
     uses: ./.github/workflows/release.yaml
     with:
       publish: true
