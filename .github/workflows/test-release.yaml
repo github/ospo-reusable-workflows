@@ -18,5 +18,8 @@ jobs:
       create-discussion: true
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
+      image-registry: ghcr.io
+      image-registry-username: ${{ github.actor }}
+      image-registry-password: ${{ secrets.GITHUB_TOKEN }}
       discussion-repository-id: ${{ secrets.DISCUSSION_REPOSITORY_ID }}
       discussion-category-id: ${{ secrets.DISCUSSION_CATEGORY_ID }}
