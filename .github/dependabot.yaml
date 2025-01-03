@@ -3,7 +3,7 @@ updates:
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
-      interval: 'weekly'
+      interval: 'daily'
       timezone: 'America/Chicago'
     commit-message:
       prefix: "chore(deps)"
