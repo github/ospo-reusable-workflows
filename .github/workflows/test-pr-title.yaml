@@ -8,6 +8,6 @@ permissions:
   contents: read
 jobs:
   lint_pr_title:
-    uses: ./.github/workflows/test-pr-title.yaml@main
+    uses: ./.github/workflows/test-pr-title.yaml
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}

@@ -9,7 +9,7 @@ permissions:
   contents: read
 jobs:
   release:
-    uses: ./.github/workflows/release.yaml@main
+    uses: ./.github/workflows/release.yaml
     with:
       publish: true
       release-config-name: release-drafter.yaml
