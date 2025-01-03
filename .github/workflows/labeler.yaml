@@ -2,6 +2,11 @@
 name: "Pull Request Labeler"
 on:
   workflow_call:
+    inputs:
+      config-path:
+        required: true
+        type: string
+        default: .github/labeler.yml
     secrets:
       github-token:
         required: true
@@ -17,4 +22,5 @@ jobs:
       - uses: actions/checkout@v4.2.2
       - uses: actions/labeler@8558fd74291d67161a8a78ce36a881fa63b766a9 # v5
         with:
+          configuration-path: ${{ inputs.config-path }}
           repo-token: "${{ secrets.github-token }}"
