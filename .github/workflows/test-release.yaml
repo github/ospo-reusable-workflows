@@ -8,8 +8,8 @@ on:
 jobs:
   release:
     permissions:
-      contents: read
-      packages: write
+      contents: write
+      pull-requests: read
     uses: ./.github/workflows/release.yaml
     with:
       publish: true
