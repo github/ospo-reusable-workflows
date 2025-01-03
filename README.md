@@ -3,9 +3,11 @@
 This is a placeholder repo for multiple GitHub Actions I use in my personal and open source projects.
 
 > [!CAUTION]
-> Check the permissions in each reusable workflow to ensure the GITHUB_TOKEN you pass from your calling workflow meets the required permissions.
+> Check the permissions in each reusable workflow to ensure the GitHub token you pass from your calling workflow meets the required permissions. Most of the time just passing `${{ secrets.GITHUB_TOKEN }}` is sufficient.
+> This may require you to go to your repository settings and then Actions to `Actions Permission` and enable reusable workflows.  You may also need to update `Workflow Permissions` to `Read and write permissions`.
 >
 > [Workflows](.github/workflows)
+
 
 > [!TIP]
 > You can reuse the following files in this repository in your own as they are used by the reusable workflows:
