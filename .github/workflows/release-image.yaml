@@ -1,6 +1,5 @@
 ---
 name: "Release Image"
-
 on:
   workflow_call:
     inputs:
@@ -22,14 +21,11 @@ on:
         required: true
       image-registry-password:
         required: true
-
-permissions:
-  contents: read
-
 jobs:
   create_action_images:
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       packages: write
     env:
       IMAGE_REGISTRY: ${{ secrets.image-registry }}

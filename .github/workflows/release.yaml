@@ -1,6 +1,5 @@
 ---
 name: "Release"
-
 on:
   workflow_call:
     inputs:
@@ -24,10 +23,6 @@ on:
       body:
         description: 'Body content of release'
         value: ${{ jobs.create_release.outputs.body }}
-
-permissions:
-  contents: read
-
 jobs:
   create_release:
     # release if
