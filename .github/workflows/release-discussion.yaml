@@ -1,6 +1,5 @@
 ---
 name: "Release Discussion"
-
 on:
   workflow_call:
     inputs:
@@ -14,17 +13,14 @@ on:
       github-token:
         required: true
       discussion-repository-id:
-        required: false
+        required: true
       discussion-category-id:
-        required: false
-
-permissions:
-  contents: read
-
+        required: true
 jobs:
   create_discussion:
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       discussions: write
     env:
       DISCUSSION_REPOSITORY_ID: ${{ secrets.discussion-repository-id }}
