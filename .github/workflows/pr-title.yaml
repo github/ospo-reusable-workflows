@@ -3,6 +3,22 @@
 name: "Lint PR Title"
 on:
   workflow_call:
+    inputs:
+      types:
+        required: false
+        type: string
+        default: |
+          build
+          chore
+          ci
+          docs
+          feat
+          fix
+          perf
+          refactor
+          revert
+          style
+          test
     secrets:
       github-token:
         required: true
@@ -19,18 +35,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.github-token }}
         with:
-          # Configure which types are allowed (newline-delimited).
-          # From: https://github.com/commitizen/conventional-commit-types/blob/master/index.json
-          # listing all below
-          types: |
-            build
-            chore
-            ci
-            docs
-            feat
-            fix
-            perf
-            refactor
-            revert
-            style
-            test
+          types: ${{ inputs.types }}

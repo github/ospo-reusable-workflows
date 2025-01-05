@@ -4,6 +4,22 @@
 
 ```yaml
 - uses: jmeridth/reusable-workflows/.github/workflows/pr-title.yml@main
+  with:
+    # Configure which types are allowed (newline-delimited).
+    # From: https://github.com/commitizen/conventional-commit-types/blob/master/index.json
+    # listing all below
+    types: |
+      build
+      chore
+      ci
+      docs
+      feat
+      fix
+      perf
+      refactor
+      revert
+      style
+      test
   secrets:
     # The GitHub token to use
     github-token: ${{ secrets.GITHUB_TOKEN }}
