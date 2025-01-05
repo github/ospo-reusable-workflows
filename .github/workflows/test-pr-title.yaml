@@ -14,5 +14,18 @@ jobs:
       pull-requests: read
       statuses: write
     uses: ./.github/workflows/pr-title.yaml
+    with:
+      types: |
+        build
+        chore
+        ci
+        docs
+        feat
+        fix
+        perf
+        refactor
+        revert
+        style
+        test
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
