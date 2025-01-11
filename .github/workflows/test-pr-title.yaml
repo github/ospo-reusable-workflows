@@ -27,5 +27,8 @@ jobs:
         revert
         style
         test
+      scopes: |
+        ci
+        docs
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}

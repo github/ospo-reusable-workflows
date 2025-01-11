@@ -19,6 +19,14 @@ on:
           revert
           style
           test
+      scopes:
+        required: false
+        type: string
+        default: ""
+      requireScope:
+        required: false
+        type: boolean
+        default: false
     secrets:
       github-token:
         required: true
@@ -36,3 +44,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.github-token }}
         with:
           types: ${{ inputs.types }}
+          scopes: ${{ inputs.scopes }}
+          requireScope: ${{ inputs.requireScope }}
