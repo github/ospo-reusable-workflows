@@ -30,5 +30,6 @@ jobs:
       scopes: |
         ci
         docs
+      requireScope: true
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
