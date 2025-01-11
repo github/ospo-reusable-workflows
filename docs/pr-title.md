@@ -20,6 +20,10 @@
       revert
       style
       test
+    scopes: |
+      ci
+      docs
+    requireScope: true
   secrets:
     # The GitHub token to use
     github-token: ${{ secrets.GITHUB_TOKEN }}
