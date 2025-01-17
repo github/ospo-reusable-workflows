@@ -3,7 +3,7 @@
 ## Inputs
 
 ```yaml
-- uses: jmeridth/reusable-workflows/.github/workflows/release.yml@main
+- uses: github/ospo-reusable-workflows/.github/workflows/release.yml@main
   with:
     # Boolean flag whether to publish the release, default is true
     publish: true

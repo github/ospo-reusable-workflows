@@ -26,7 +26,7 @@ jobs:
       pull-requests: read
     uses: ./.github/workflows/release-image.yaml
     with:
-      image-name: jmeridth/reusable-workflows
+      image-name: github/ospo-reusable-workflows
       full-tag: ${{ needs.release.outputs.full-tag }}
       short-tag: ${{ needs.release.outputs.short-tag }}
     secrets:

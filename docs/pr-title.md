@@ -3,7 +3,7 @@
 ## Inputs
 
 ```yaml
-- uses: jmeridth/reusable-workflows/.github/workflows/pr-title.yml@main
+- uses: github/ospo-reusable-workflows/.github/workflows/pr-title.yml@main
   with:
     # Configure which types are allowed (newline-delimited).
     # From: https://github.com/commitizen/conventional-commit-types/blob/master/index.json

@@ -3,9 +3,9 @@
 ## Inputs
 
 ```yaml
-- uses: jmeridth/reusable-workflows/.github/workflows/release.yml@main
+- uses: github/ospo-reusable-workflows/.github/workflows/release.yml@main
   with:
-    # Image name, usually owner/repository (jmeridth/reusable-workflows)
+    # Image name, usually owner/repository (github/ospo-reusable-workflows)
     image-name: ${{ github.repository }}
     # Full tag of the image, usually the version (v1.0.0)
     full-tag: v1.0.0
