@@ -1,6 +1,6 @@
 # Reusable Workflows
 
-This is a placeholder repo for multiple GitHub Actions I use in my personal and open source projects.
+This is a placeholder repo for multiple GitHub Actions we use in open source projects.
 
 ## Reusable Workflows Available
 
