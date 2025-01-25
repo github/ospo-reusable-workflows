@@ -29,6 +29,7 @@ jobs:
       image-name: github/ospo-reusable-workflows
       full-tag: ${{ needs.release.outputs.full-tag }}
       short-tag: ${{ needs.release.outputs.short-tag }}
+      create-attestation: true
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
       image-registry: ghcr.io
