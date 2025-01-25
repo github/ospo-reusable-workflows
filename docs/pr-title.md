@@ -4,6 +4,10 @@
 
 ```yaml
 - uses: github/ospo-reusable-workflows/.github/workflows/pr-title.yml@main
+  permissions:
+    contents: read
+    pull-requests: read
+    statuses: write
   with:
     # Configure which types are allowed (newline-delimited).
     # From: https://github.com/commitizen/conventional-commit-types/blob/master/index.json

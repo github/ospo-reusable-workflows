@@ -20,10 +20,10 @@ jobs:
   release_image:
     needs: release
     permissions:
-      contents: write
-      discussions: write
+      contents: read
       packages: write
-      pull-requests: read
+      id-token: write
+      attestations: write
     uses: ./.github/workflows/release-image.yaml
     with:
       image-name: github/ospo-reusable-workflows
