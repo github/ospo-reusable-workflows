@@ -23,5 +23,5 @@ This is a placeholder repo for multiple GitHub Actions we use in open source pro
 > - [labeler.yml](.github/labeler.yml)
 > - [release-drafter.yaml](.github/release-drafter.yaml)
 
-> [!WARNING]  
-> The container image generated in this repo is a placeholder, it contains no content. It uses [alpine:latest and says "Hello World"](https://github.com/github/ospo-reusable-workflows/blob/main/Dockerfile). The image creation option is for GitHub Actions who need it because their Action is not written in JavaScript/Typescript and they want to track downloads/usage.
+> [!NOTE]
+> The container image generated in this repo is a placeholder, it contains the files of this repository to ensure it shows "change" and a new container image digest is generated. This allows us to see tagging of the new container image is working and newly generated attestation is related to a new SHA/digest in the [packages view](https://github.com/github/ospo-reusable-workflows/pkgs/container/ospo-reusable-workflows).
