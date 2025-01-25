@@ -31,6 +31,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
+      attestations: write
     env:
       IMAGE_REGISTRY: ${{ secrets.image-registry }}
       IMAGE_REGISTRY_USERNAME: ${{ secrets.image-registry-username }}
