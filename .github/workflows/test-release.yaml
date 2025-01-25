@@ -26,7 +26,7 @@ jobs:
       attestations: write
     uses: ./.github/workflows/release-image.yaml
     with:
-      image-name: github/ospo-reusable-workflows
+      image-name: ${{ github.repository }}
       full-tag: ${{ needs.release.outputs.full-tag }}
       short-tag: ${{ needs.release.outputs.short-tag }}
       create-attestation: true

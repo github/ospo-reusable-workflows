@@ -14,7 +14,6 @@ permissions:
 jobs:
   main:
     permissions:
-      contents: write
       pull-requests: write
     name: Auto label pull requests
     runs-on: ubuntu-latest
@@ -24,3 +23,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.github-token }}
         with:
           config-name: ${{ inputs.config-name }}
+          disable-releaser: true
