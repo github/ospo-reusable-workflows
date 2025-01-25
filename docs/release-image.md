@@ -4,6 +4,11 @@
 
 ```yaml
 - uses: github/ospo-reusable-workflows/.github/workflows/release.yml@main
+  permissions:
+    contents: read
+    packages: write
+    id-token: write
+    attestations: write
   with:
     # Image name, usually owner/repository (github/ospo-reusable-workflows)
     image-name: ${{ github.repository }}

@@ -4,6 +4,9 @@
 
 ```yaml
 - uses: github/ospo-reusable-workflows/.github/workflows/release.yml@main
+  permissions:
+    contents: write
+    pull-requests: read
   with:
     # Boolean flag whether to publish the release, default is true
     publish: true

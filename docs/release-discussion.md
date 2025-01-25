@@ -4,6 +4,9 @@
 
 ```yaml
 - uses: github/ospo-reusable-workflows/.github/workflows/release.yml@main
+  permissions:
+    contents: read
+    discussions: write
   with:
     # Full tag of the image, usually the version (v1.0.0)
     full-tag: v1.0.0
