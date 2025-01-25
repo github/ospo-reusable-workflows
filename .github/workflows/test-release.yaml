@@ -34,6 +34,7 @@ jobs:
       image-registry: ghcr.io
       image-registry-username: ${{ github.actor }}
       image-registry-password: ${{ secrets.GITHUB_TOKEN }}
+      create-attestation: true
   release_discussion:
     needs: release
     permissions:

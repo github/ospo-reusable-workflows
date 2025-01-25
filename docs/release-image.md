@@ -16,6 +16,8 @@
     full-tag: v1.0.0
     # Short tag of the image, usually the major version (v1)
     short-tag: v1
+    # Flag to create an attestation
+    create-attestation: true
   secrets:
     # The GitHub token to use
     github-token: ${{ secrets.GITHUB_TOKEN }}
