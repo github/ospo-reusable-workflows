@@ -29,12 +29,12 @@ jobs:
       image-name: ${{ github.repository }}
       full-tag: ${{ needs.release.outputs.full-tag }}
       short-tag: ${{ needs.release.outputs.short-tag }}
+      create-attestation: true
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
       image-registry: ghcr.io
       image-registry-username: ${{ github.actor }}
       image-registry-password: ${{ secrets.GITHUB_TOKEN }}
-      create-attestation: true
   release_discussion:
     needs: release
     permissions:
