@@ -12,6 +12,10 @@ on:
       short-tag:
         required: true
         type: string
+      create-attestation:
+        required: false
+        type: boolean
+        default: false
     secrets:
       github-token:
         required: true
@@ -44,6 +48,7 @@ jobs:
       - name: Push Docker Image
         if: ${{ success() }}
         uses: docker/build-push-action@67a2d409c0a876cbe6b11854e3e25193efe4e62d
+        id: push
         with:
           context: .
           file: ./Dockerfile
@@ -55,3 +60,11 @@ jobs:
           platforms: linux/amd64,linux/arm64
           provenance: false
           sbom: false
+      # Generate a build attestation and push it to sigstore
+      - name: Generate artifact attestation
+        if: ${{ inputs.create-attestation }}
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true
