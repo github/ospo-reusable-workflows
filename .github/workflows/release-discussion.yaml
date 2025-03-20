@@ -37,7 +37,7 @@ jobs:
           echo "discussion-category-id secret is not set"
           exit 1
       - name: Create an Announcement Discussion for Release
-        uses: abirismyname/create-discussion@6e6ef67e5eeb042343ef8b3d8d0f5d545cbdf024
+        uses: abirismyname/create-discussion@2103ec8b3403ca2f76ff6e6aa345e7032f24a50e
         env:
           GH_TOKEN: ${{ secrets.github-token }}
         with:
