@@ -1,0 +1,19 @@
+---
+name: "Test Major Version Updater"
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      TAG_NAME:
+        description: "Tag name that the major tag will point to (e.g. v1.2.3)"
+        required: true
+permissions:
+  contents: read
+jobs:
+  labeler:
+    permissions:
+      contents: write
+    uses: ./.github/workflows/major-version-updater.yaml
+    with:
+      tag_name: ${{ github.event.inputs.TAG_NAME || github.ref}}
