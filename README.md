@@ -4,8 +4,9 @@ This is a placeholder repo for multiple GitHub Actions we use in open source pro
 
 ## Reusable Workflows Available
 
-- [Labeler](docs/labeler.md)
 - [Auto-Labeler](docs/auto-labeler.md)
+- [Labeler](docs/labeler.md)
+- [Major Version Updater](docs/major-version-updater.md)
 - [PR Title](docs/pr-title.md)
 - [Release](docs/release.md)
 - [Release Image](docs/release-image.md)

@@ -16,4 +16,6 @@ jobs:
       contents: write
     uses: ./.github/workflows/major-version-updater.yaml
     with:
-      tag_name: ${{ github.event.inputs.TAG_NAME || github.ref}}
+      tag-name: ${{ github.event.inputs.TAG_NAME || github.ref}}
+    secrets:
+      github-token: ${{ secrets.GITHUB_TOKEN }}

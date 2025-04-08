@@ -3,9 +3,12 @@ name: "Major Version Updater"
 on:
   workflow_call:
     inputs:
-      tag_name:
+      tag-name:
         required: true
         type: string
+    secrets:
+      github-token:
+        required: true
 permissions:
   contents: read
 jobs:
@@ -17,17 +20,19 @@ jobs:
       - uses: actions/checkout@v4.2.2
         with:
           fetch-tags: true
-          ref: ${{ inputs.tag_name }}
+          ref: ${{ inputs.tag-name }}
       - name: version
         id: version
         env:
-          TAG_NAME: ${{ inputs.tag_name }}
+          TAG_NAME: ${{ inputs.tag-name }}
         run: |
           tag=${TAG_NAME/refs\/tags\//}
           version=${tag#v}
           major=${version%%.*}
           { echo "tag=${tag}"; echo "version=${version}"; echo "major=${major}"; } >> "$GITHUB_OUTPUT"
       - name: force update major tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.github-token }}
         run: |
           git tag -f v${{ steps.version.outputs.major }} ${{ steps.version.outputs.tag }}
           git push -f origin v${{ steps.version.outputs.major }}
