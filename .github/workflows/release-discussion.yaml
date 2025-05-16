@@ -38,10 +38,9 @@ jobs:
           exit 1
       - name: Create an Announcement Discussion for Release
         uses: abirismyname/create-discussion@c2b7c825241769dda523865ae444a879f6bbd0e0
-        env:
-          GH_TOKEN: ${{ secrets.github-token }}
         with:
           title: ${{ inputs.full-tag }}
           body: ${{ inputs.body }}
           repository-id: ${{ env.DISCUSSION_REPOSITORY_ID }}
           category-id: ${{ env.DISCUSSION_CATEGORY_ID }}
+          github-token: ${{ secrets.github-token }}
