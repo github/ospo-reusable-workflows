@@ -27,3 +27,22 @@
 ## Outputs
 
 None
+
+## Notes
+
+In order to get the discussion repository ID and category ID, you can use the GitHub GraphQL API Explorer: https://docs.github.com/en/graphql/overview/explorer with the following query (replace `OWNER` and `REPO` with the appropriate values):
+
+```graphql
+query {
+  repository(owner: "OWNER", name: "REPO") {
+    id
+    discussionCategories(first: 50) {
+      nodes {
+        id
+        name
+        slug
+      }
+    }
+  }
+}
+```
