@@ -18,10 +18,10 @@ This is a placeholder repo for multiple GitHub Actions we use in open source pro
 >
 > [Workflows](.github/workflows)
 
-> [!CAUTION]
-> In our default `release-drafter.yaml` file and hardcoded in our `release.yaml` reusable workflow, we use the labels `major`, `minor`, and `patch` to determine the type of release to create. Unfortunately, Dependabot uses these same labels, by default, on its PRs to indicate the type of version update. This can cause unintended releases to be created when Dependabot PRs are merged.
-> The "fix" is to include `labels: ["package-name", "dependencies"]` in your `dependabot.yaml` configuration file to ensure Dependabot PRs are labeled correctly and do not use the `major`, `minor`, or `patch` labels.
-> You can see an example of this in the [dependabot.yaml](.github/dependabot.yaml) file in this repository.
+> [!TIP]
+> In order to update the semver version of a release both the `release` and a semver label (`major`, `minor`, or `patch`) must be used on the pull request that is merged to `main`.
+>
+> This is to prevent accidental version bumps from pull requests that are not intended to be releases. (example: Dependabot PRs that label themselves with semver labels)
 
 > [!TIP]
 > You can reuse the following files in this repository in your own as they are used by the reusable workflows:
