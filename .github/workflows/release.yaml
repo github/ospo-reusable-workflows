@@ -25,19 +25,30 @@ on:
         value: ${{ jobs.create_release.outputs.body }}
 jobs:
   create_release:
-    # release if
-    # manual deployment OR
-    # merged to main and labelled with release labels (breaking, feature, vuln) OR
-    # merged to main and labelled with release + a semver label (major, minor, OR patch)
+    # release if:
+    # Manual deployment (workflow_dispatch) OR
+    # The pull request was merged AND
+    # It has at least one of these:
+    #  - reaking
+    #  - feature
+    #  - vuln
+    #  - release (with or without any of major / minor / patch labels)
     if: |
       (
       github.event_name == 'workflow_dispatch') ||
       (github.event.pull_request.merged == true &&
-      (
+      ((
       contains(github.event.pull_request.labels.*.name, 'breaking') ||
       contains(github.event.pull_request.labels.*.name, 'feature') ||
       contains(github.event.pull_request.labels.*.name, 'vuln')
       ) ||
+      (
+      contains(github.event.pull_request.labels.*.name, 'release') &&
+      !(
+        contains(github.event.pull_request.labels.*.name, 'major') ||
+        contains(github.event.pull_request.labels.*.name, 'minor') ||
+        contains(github.event.pull_request.labels.*.name, 'patch')
+      )) ||
       (
       contains(github.event.pull_request.labels.*.name, 'release') &&
       contains(github.event.pull_request.labels.*.name, 'major')
@@ -49,7 +60,7 @@ jobs:
       (
       contains(github.event.pull_request.labels.*.name, 'release') &&
       contains(github.event.pull_request.labels.*.name, 'patch')
-      ))
+      )))
     outputs:
       full-tag: ${{ steps.release-drafter.outputs.tag_name }}
       short-tag: ${{ steps.get_tag_name.outputs.SHORT_TAG }}
