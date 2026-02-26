@@ -66,7 +66,7 @@ jobs:
           sbom: false
       - name: Generate artifact attestation
         if: ${{ inputs.create-attestation }}
-        uses: actions/attest-build-provenance@v3
+        uses: actions/attest-build-provenance@v4
         with:
           subject-name: ${{ env.IMAGE_REGISTRY }}/${{ inputs.image-name}}
           subject-digest: ${{ steps.push.outputs.digest }}
