@@ -1,5 +1,8 @@
 # Reusable Workflows
 
+> [!IMPORTANT]
+> This repository has been transferred from `github/ospo-reusable-workflows` to `github-community-projects/ospo-reusable-workflows`. Please update any references to point to the new location.
+
 This is a placeholder repo for multiple GitHub Actions we use in open source projects.
 
 ## Reusable Workflows Available
@@ -30,4 +33,4 @@ This is a placeholder repo for multiple GitHub Actions we use in open source pro
 > - [release-drafter.yaml](.github/release-drafter.yaml)
 
 > [!NOTE]
-> The container image generated in this repo is a placeholder, it contains the files of this repository to ensure it shows "change" and a new container image digest is generated. This allows us to see tagging of the new container image is working and newly generated attestation is related to a new SHA/digest in the [packages view](https://github.com/github/ospo-reusable-workflows/pkgs/container/ospo-reusable-workflows).
+> The container image generated in this repo is a placeholder, it contains the files of this repository to ensure it shows "change" and a new container image digest is generated. This allows us to see tagging of the new container image is working and newly generated attestation is related to a new SHA/digest in the [packages view](https://github.com/github-community-projects/ospo-reusable-workflows/pkgs/container/ospo-reusable-workflows).
