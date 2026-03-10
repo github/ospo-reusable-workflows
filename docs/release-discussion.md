@@ -3,7 +3,7 @@
 ## Inputs
 
 ```yaml
-- uses: github/ospo-reusable-workflows/.github/workflows/release.yml@main
+- uses: github-community-projects/ospo-reusable-workflows/.github/workflows/release.yml@main
   permissions:
     contents: read
     discussions: write

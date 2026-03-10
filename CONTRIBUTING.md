@@ -1,7 +1,7 @@
 ## Contributing
 
-[fork]: https://github.com/github/REPO/fork
-[pr]: https://github.com/github/REPO/compare
+[fork]: https://github.com/github-community-projects/ospo-reusable-workflows/fork
+[pr]: https://github.com/github-community-projects/ospo-reusable-workflows/compare
 
 Hi there! We're thrilled that you'd like to contribute to this project. Your help is essential for keeping it great.
 

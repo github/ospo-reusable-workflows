@@ -3,7 +3,7 @@
 ## Inputs
 
 ```yaml
-- uses: github/ospo-reusable-workflows/.github/workflows/major-version-updater.yml@main
+- uses: github-community-projects/ospo-reusable-workflows/.github/workflows/major-version-updater.yml@main
   permissions:
     contents: write
   with:
