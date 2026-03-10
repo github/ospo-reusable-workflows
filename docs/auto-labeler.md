@@ -3,7 +3,7 @@
 ## Inputs
 
 ```yaml
-- uses: github-community-projects/ospo-reusable-workflows/.github/workflows/auto-labeler.yml@main
+- uses: github-community-projects/ospo-reusable-workflows/.github/workflows/auto-labeler.yaml@main
   permissions:
     contents: read
     pull-requests: write
