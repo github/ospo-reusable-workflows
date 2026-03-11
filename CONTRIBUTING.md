@@ -15,7 +15,6 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 - [I Want To Contribute](#i-want-to-contribute)
 - [Reporting Bugs](#reporting-bugs)
 - [Suggesting Enhancements](#suggesting-enhancements)
-- [Releases](#releases)
 
 ## I Have a Question
 
@@ -57,7 +56,7 @@ A good bug report shouldn't leave others needing to chase you up for more inform
 
 ### How Do I Submit a Good Bug Report?
 
-Please submit a bug report using our [GitHub Issues template](https://github.com/github-community-projects/ospo-reusable-workflows/issues/new?template=bug_report.yml).
+Please submit a bug report using our [GitHub Issues template](https://github.com/github-community-projects/ospo-reusable-workflows/issues/new?template=bug_report.yaml).
 
 ## Suggesting Enhancements
 
@@ -76,7 +75,7 @@ This section guides you through submitting an enhancement suggestion for ospo-re
 
 ### How Do I Submit a Good Enhancement Suggestion?
 
-Please submit an enhancement suggestion using our [GitHub Issues template](https://github.com/github-community-projects/ospo-reusable-workflows/issues/new?template=feature_request.yml).
+Please submit an enhancement suggestion using our [GitHub Issues template](https://github.com/github-community-projects/ospo-reusable-workflows/issues/new?template=feature_request.yaml).
 
 ### Pull Request Standards
 
