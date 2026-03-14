@@ -25,6 +25,8 @@ on:
         required: true
       image-registry-password:
         required: true
+permissions:
+  contents: read
 jobs:
   create_action_images:
     runs-on: ubuntu-latest
@@ -38,7 +40,11 @@ jobs:
       IMAGE_REGISTRY_USERNAME: ${{ secrets.image-registry-username }}
       IMAGE_REGISTRY_PASSWORD: ${{ secrets.image-registry-password }}
     steps:
-      - uses: actions/checkout@v6
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@58077d3c7e43986b6b15fba718e8ea69e387dfcc # v2.15.1
+        with:
+          egress-policy: audit
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: false
       - name: Set up Docker Buildx
@@ -66,7 +72,7 @@ jobs:
           sbom: false
       - name: Generate artifact attestation
         if: ${{ inputs.create-attestation }}
-        uses: actions/attest-build-provenance@v4
+        uses: actions/attest-build-provenance@a2bbfa25375fe432b6a289bc6b6cd05ecd0c4c32 # v4.1.0
         with:
           subject-name: ${{ env.IMAGE_REGISTRY }}/${{ inputs.image-name}}
           subject-digest: ${{ steps.push.outputs.digest }}
