@@ -51,13 +51,12 @@ jobs:
         uses: step-security/harden-runner@58077d3c7e43986b6b15fba718e8ea69e387dfcc # v2.15.1
         with:
           egress-policy: audit
-      - uses: release-drafter/release-drafter@3a7fb5c85b80b1dda66e1ccb94009adbbd32fce3
+      - uses: release-drafter/release-drafter@3a7fb5c85b80b1dda66e1ccb94009adbbd32fce3 # v7.0.0
         id: release-drafter
-        env:
-          GITHUB_TOKEN: ${{ secrets.github-token }}
         with:
           config-name: ${{ inputs.release-config-name }}
           publish: ${{ inputs.publish }}
+          token: ${{ secrets.github-token }}
       - name: Get the Short Tag
         id: get_tag_name
         run: |
