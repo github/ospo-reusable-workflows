@@ -26,15 +26,13 @@ on:
       image-registry-password:
         required: true
 permissions:
+  attestations: write
   contents: read
+  id-token: write
+  packages: write
 jobs:
   create_action_images:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-      id-token: write
-      attestations: write
     env:
       IMAGE_REGISTRY: ${{ secrets.image-registry }}
       IMAGE_REGISTRY_USERNAME: ${{ secrets.image-registry-username }}

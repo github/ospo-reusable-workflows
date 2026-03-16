@@ -18,12 +18,10 @@ on:
         required: true
 permissions:
   contents: read
+  discussions: write
 jobs:
   create_discussion:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      discussions: write
     env:
       DISCUSSION_REPOSITORY_ID: ${{ secrets.discussion-repository-id }}
       DISCUSSION_CATEGORY_ID: ${{ secrets.discussion-category-id }}

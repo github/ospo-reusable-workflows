@@ -6,11 +6,9 @@ on:
     types: [opened, reopened, edited, synchronize]
 permissions:
   contents: read
+  pull-requests: write
 jobs:
   auto_labeler:
-    permissions:
-      contents: read
-      pull-requests: write
     uses: ./.github/workflows/auto-labeler.yaml
     with:
       config-name: release-drafter.yaml

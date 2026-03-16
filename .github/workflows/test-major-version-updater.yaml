@@ -9,11 +9,9 @@ on:
         description: "Tag name that the major tag will point to (e.g. v1.2.3)"
         required: true
 permissions:
-  contents: read
+  contents: write
 jobs:
   labeler:
-    permissions:
-      contents: write
     uses: ./.github/workflows/major-version-updater.yaml
     with:
       tag-name: ${{ github.event.inputs.TAG_NAME || github.ref}}

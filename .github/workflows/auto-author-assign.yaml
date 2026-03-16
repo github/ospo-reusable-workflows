@@ -5,11 +5,10 @@ on:
     types: [opened, reopened, synchronize]
 permissions:
   contents: read
+  pull-requests: write
 jobs:
   assign:
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
     steps:
       - name: Harden the runner (Audit all outbound calls)
         uses: step-security/harden-runner@58077d3c7e43986b6b15fba718e8ea69e387dfcc # v2.15.1

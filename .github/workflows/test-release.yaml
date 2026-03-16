@@ -6,11 +6,15 @@ on:
   pull_request_target:
     types: [closed]
     branches: [main]
+permissions:
+  attestations: write
+  contents: write
+  discussions: write
+  id-token: write
+  packages: write
+  pull-requests: read
 jobs:
   release:
-    permissions:
-      contents: write
-      pull-requests: read
     uses: ./.github/workflows/release.yaml
     with:
       publish: true
@@ -19,11 +23,6 @@ jobs:
       github-token: ${{ secrets.GITHUB_TOKEN }}
   release_image:
     needs: release
-    permissions:
-      contents: read
-      packages: write
-      id-token: write
-      attestations: write
     uses: ./.github/workflows/release-image.yaml
     with:
       image-name: ${{ github.repository }}
@@ -37,9 +36,6 @@ jobs:
       image-registry-password: ${{ secrets.GITHUB_TOKEN }}
   release_discussion:
     needs: release
-    permissions:
-      contents: read
-      discussions: write
     uses: ./.github/workflows/release-discussion.yaml
     with:
       full-tag: ${{ needs.release.outputs.full-tag }}
