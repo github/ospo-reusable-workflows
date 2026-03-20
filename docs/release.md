@@ -13,6 +13,8 @@
     # The name of the configuration file to use, default is release-drafter.yml
     # from the release-drafter/release-drafter GitHub Action
     release-config-name: release-drafter.yml
+    # Boolean flag whether to update major tag to latest full semver tag, default is true
+    update-major-tag: true
   secrets:
     # The GitHub token to use
     github-token: ${{ secrets.GITHUB_TOKEN }}

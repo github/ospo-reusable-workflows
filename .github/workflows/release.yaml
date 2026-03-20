@@ -10,6 +10,10 @@ on:
       release-config-name:
         required: true
         type: string
+      update-major-tag:
+        required: false
+        type: boolean
+        default: true
     secrets:
       github-token:
         required: true
@@ -62,3 +66,30 @@ jobs:
         run: |
           short_tag=$(echo ${{ steps.release-drafter.outputs.tag_name }} | cut -d. -f1)
           echo "SHORT_TAG=$short_tag" >> "$GITHUB_OUTPUT"
+
+  update_major_tag:
+    needs: create_release
+    if: ${{ inputs.update-major-tag && needs.create_release.outputs.full-tag != '' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@fa2e9d605c4eeb9fcad4c99c224cee0c6c7f3594 # v2.16.0
+        with:
+          egress-policy: audit
+
+      - name: Checkout Repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-tags: true
+          ref: ${{ needs.create_release.outputs.full-tag }}
+          persist-credentials: true
+
+      - name: Force update major tag
+        run: |
+          git tag -f "${SHORT}" "${FULL}"
+          git push -f origin "${SHORT}"
+        env:
+          SHORT: ${{ needs.create_release.outputs.short-tag }}
+          FULL: ${{ needs.create_release.outputs.full-tag }}

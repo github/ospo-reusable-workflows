@@ -19,3 +19,6 @@ ignore.*
 .env
 .env.test
 *.pem
+
+# ai
+**/.claude/*.local.*
