@@ -84,13 +84,12 @@ jobs:
         with:
           fetch-tags: true
           ref: ${{ needs.create_release.outputs.full-tag }}
-          persist-credentials: false
+          persist-credentials: true
 
       - name: Force update major tag
         run: |
           git tag -f "${SHORT}" "${FULL}"
           git push -f origin "${SHORT}"
         env:
-          GITHUB_TOKEN: ${{ secrets.github-token }}
           SHORT: ${{ needs.create_release.outputs.short-tag }}
           FULL: ${{ needs.create_release.outputs.full-tag }}
